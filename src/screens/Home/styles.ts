@@ -1,17 +1,16 @@
-import { StyleSheet } from 'react-native';
-
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   container: {
-      flex: 1,
-      backgroundColor: '#131016',
-      padding: 20
+    flex: 1,
+    backgroundColor: '#131016',
+    padding: 20,
   },
   textMain: {
     fontWeight: 'bold',
     color: 'white',
     fontSize: 24,
-    marginTop: 30
+    marginTop: 30,
   },
   text: {
     fontSize: 16,
@@ -36,7 +35,7 @@ export const styles = StyleSheet.create({
     height: 56,
     borderRadius: 5,
     backgroundColor: '#31cf67',
-    alignItems:'center',
+    alignItems: 'center',
     justifyContent: 'center',
   },
   form: {
@@ -53,6 +52,6 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     fontSize: 14,
     paddingLeft: 10,
-    paddingRight: 10
-  }
+    paddingRight: 10,
+  },
 })
