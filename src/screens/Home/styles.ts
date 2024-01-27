@@ -52,5 +52,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 20,
     fontSize: 14,
+    paddingLeft: 10,
+    paddingRight: 10
   }
 })

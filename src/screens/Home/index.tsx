@@ -1,21 +1,27 @@
 import { Text, View, TextInput, TouchableOpacity, FlatList, Alert } from "react-native";
 import { styles } from "./styles";
 import Participant from "../../components/Participant";
+import { useState } from "react";
 
 export default function Home() {
-  const partipants = ['Rodrigo', 'Carlos', 'Roberto', 'Alonso', 'Julia', 'Mike', 'Ana', 'Carol', 'Rose', 'Roberta']
+  const [participants, setParticipants] = useState<string[]>([])
+  const [participantName, setParticipantName] = useState('')
 
   function handleParticipantAdd() {
-    if(partipants.includes("Rodrigo")) {
+    if(participants.includes(participantName)) {
       return Alert.alert("Participante existe", "já existe um participante na lista com este nome.")
     }
+
+    setParticipants(prevState => [...prevState, participantName])
+    setParticipantName('')
   }
 
   function handleParticipantRemove(name: string) {
     Alert.alert("Remover", `Remover o participante ${name}?`, [
       {
         text: 'Sim',
-        onPress: () => Alert.alert("Participante removido da lista")
+        onPress: () => setParticipants(prevState => prevState.filter(participant => participant !== name))
+
       },
       {
         text: 'Não',
@@ -34,6 +40,8 @@ export default function Home() {
           style={styles.input}
           placeholder="Nome do participante"
           placeholderTextColor='#6b6b6b'
+          onChangeText={setParticipantName}
+          value={participantName}
         />
          <TouchableOpacity style={styles.button} onPress={handleParticipantAdd}>
           <Text style={styles.buttonText}>+</Text>
@@ -42,11 +50,11 @@ export default function Home() {
       
       <FlatList 
         showsVerticalScrollIndicator={false}
-        data={partipants}
+        data={participants}
         keyExtractor={item => item}
         ListEmptyComponent={() => (
-          <Text style={styles.listEmptyText}>Ninguém chegou no evento ainda? Adicione a sua lista de
-          presença novos participantes.
+          <Text style={styles.listEmptyText}>Ninguém chegou no evento ainda? Adicione novos participantes a lista de
+          presença.
           </Text>
         )} 
         renderItem={({ item }) => (
