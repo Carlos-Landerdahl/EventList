@@ -20,10 +20,15 @@ export default function Home() {
         'Participante existe',
         'já existe um participante na lista com este nome.',
       )
+    } else if (participantName.length <= 2) {
+      return Alert.alert(
+        'Nome do participante',
+        'Nome deve conter pelo menos 3 caracteres',
+      )
+    } else {
+      setParticipants((prevState) => [...prevState, participantName])
+      setParticipantName('')
     }
-
-    setParticipants((prevState) => [...prevState, participantName])
-    setParticipantName('')
   }
 
   function handleParticipantRemove(name: string) {

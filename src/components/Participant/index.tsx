@@ -7,10 +7,6 @@ type Props = {
 }
 
 export default function Participant({ name, onRemove }: Props) {
-  function handleParticipantAdd() {
-    console.log('Clicou')
-  }
-
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{name}</Text>
